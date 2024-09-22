@@ -1,13 +1,15 @@
 [tool.poetry]
-name = "python-template"
-version = "1.0.0"
-description = "Python project template"
+name = "xsampa_to_ipa"
+version = "0.1.0"
+description = "XSAMPA to IPA converter for Anki"
 authors = ["AnnexK <roadto3kmmr@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "~3.9"
+anki = "^24.6.3"
+aqt = "^24.6.3"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.1.4"
