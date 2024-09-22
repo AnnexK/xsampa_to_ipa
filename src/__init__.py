@@ -20,7 +20,7 @@ def card_count(mw: AnkiQt) -> Callable[[], None]:
     """
     Get total card count for collection and show it.
 
-    :param collection: Card collection.
+    :param mw: Main window object.
     """
 
     def _callback() -> None:
