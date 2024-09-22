@@ -1,6 +1,6 @@
 from typing import Callable
 
-from aqt import Collection, mw
+from aqt import AnkiQt, mw
 from aqt.qt import QAction
 from aqt.utils import showInfo
 
@@ -16,7 +16,7 @@ class MainWindowUninitializedError(Exception):
         super().__init__("Anki main window is uninitialized")
 
 
-def card_count(collection: Collection) -> Callable[[], None]:
+def card_count(mw: AnkiQt) -> Callable[[], None]:
     """
     Get total card count for collection and show it.
 
@@ -24,7 +24,7 @@ def card_count(collection: Collection) -> Callable[[], None]:
     """
 
     def _callback() -> None:
-        count: int = collection.card_count()
+        count: int = mw.col.card_count()
         showInfo(f"Card count: {count}")
 
     return _callback
@@ -32,6 +32,6 @@ def card_count(collection: Collection) -> Callable[[], None]:
 
 if mw is None:
     raise MainWindowUninitializedError
-action = QAction("show_card_count", mw)
-action.triggered.connect(card_count(mw.col))
+action = QAction("Show total card count", mw)
+action.triggered.connect(card_count(mw))
 mw.form.menuTools.addAction(action)
